@@ -13,7 +13,7 @@
       :key="index">
       {{ index }} :
       <input
-        v-model="teams[index]"
+        v-model="teams[index - 1]"
         type="text">
     </label>
     <button
@@ -38,19 +38,15 @@ export default {
   },
   methods: {
     shuffle () {
-      let order = [];
-      let target = this.teams;
 
-      console.log(this.teams.length);
-
-      for (let index = 0; index < this.teams.length; index++) {
-        const num = Math.floor( Math.random() * (this.teams.length - index - 1) );
-        console.log(num);
-        order.push(target[num]);
-        target = target.filter(n => n !== num);
+      console.log('チーム数：' + this.teams.length);
+      for (let i = 0; i < this.teams.length; i++) {
+        const r = Math.floor(Math.random() % (i + 1));
+        const tmp = this.teams[i];
+        this.$set(this.teams, i, this.teams[r]);
+        this.$set(this.teams, r, tmp);
       }
-
-      this.teams = order;
+      console.log(this.teams);
     },
     plus () {
       this.team_num++;
