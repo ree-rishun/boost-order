@@ -39,15 +39,16 @@ export default {
     }
   },
   methods: {
-    shuffle () {
+    shuffle () {  // シャッフル
       for (let i = 0; i < this.teams.length; i++) {
-        const r = Math.floor(Math.random() % (i + 1));
+        const r = Math.floor(Math.random() * Math.floor(i + 1));
+        console.log(r);
         const tmp = this.teams[i];
         this.$set(this.teams, i, this.teams[r]);
         this.$set(this.teams, r, tmp);
       }
     },
-    plus () {
+    plus () {     // プラス
       this.team_num++;
     }
   }

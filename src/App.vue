@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>TEAM SHUFFLE</h1>
-    <Result msg="Welcome to Your Vue.js App"/>
+    <Result/>
   </div>
 </template>
 
